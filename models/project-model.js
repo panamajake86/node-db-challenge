@@ -11,7 +11,11 @@ function getProjects() {
 };
 
 function getProjectsById(project_id) {
-    return db('project').where({ project_id: project_id });
+    return db('project')
+        .join('task', 'project.id', 'task.project_id')
+        .join('project_resource', 'project.id', 'project_resource.project_id')
+        .join('resource', 'resource.id', 'project_resource.resource_id')
+        .where({ 'project.id': project_id });
 };
 
 function addProjects(data) {

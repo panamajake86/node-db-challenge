@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
     const data = req.body;
 
     try {
-        const proj = await Projects.addProjects(body);
+        const proj = await Projects.addProjects(data);
         res.status(200).json(proj);
     } catch (err) {
         res.status(500).json({ message: 'Could not add project.', err});
