@@ -1,10 +1,10 @@
 
 exports.up = function(knex) {
-  return (knex.shema
+  return (knex.schema
     .createTable('project', tbl => {
         tbl.increments();
         tbl.string('project_name', 128).notNullable();
-        tbl.string('project_desc').notNullable();
+        tbl.string('project_desc');
         tbl.boolean('project_completed').notNullable().defaultTo(false);
     })
     .createTable('resource', tbl => {
